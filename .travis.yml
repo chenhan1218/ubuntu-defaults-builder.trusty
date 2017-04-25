@@ -1,0 +1,14 @@
+dist: trusty
+sudo: required
+language: generic
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install -y ubuntu-defaults-builder
+
+install:
+  # Must put something here, or travis would ask us for requirments.txt
+  - echo "Nothing to install"
+
+script:
+  - ubuntu-defaults-image --locale nl_nl --components main,restricted,universe,multiverse
