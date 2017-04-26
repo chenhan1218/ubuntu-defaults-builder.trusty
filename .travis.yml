@@ -12,3 +12,6 @@ install:
 
 script:
   - ubuntu-defaults-image --locale nl_nl --components main,restricted,universe,multiverse
+
+after_script:
+  - ls -al
