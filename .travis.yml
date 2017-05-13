@@ -1,17 +1,29 @@
 dist: trusty
 sudo: required
 language: generic
-
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y ubuntu-defaults-builder
-
+- sudo apt-get -qq update
+- sudo apt-get install -y ubuntu-defaults-builder
 install:
-  # Must put something here, or travis would ask us for requirments.txt
-  - echo "Nothing to install"
-
+- echo "Nothing to install"
 script:
-  - ubuntu-defaults-image --locale nl_nl --components main,restricted,universe,multiverse
-
+- ubuntu-defaults-image --locale nl_nl --components main,restricted,universe,multiverse
 after_script:
-  - ls -al
+- ls -al
+deploy:
+  provider: releases
+  api_key:
+    secure: FW4bY0A4SdQbDWH+dn1TA2cVA8yehdN0lGSlYYpbClBc3Lf0yC/v2aGaBkVAB52z2pdgek6DN266a+TkL6ZLbsqJJLn8TuMIOB04gJtnXKHpVX72vgqgfesw+Oh/1GgrnmsyXCBr854lsWTUkoUy5t+Q5ztbHpcJdN+OaE3nRrjzt893iMcES3Ni4TN9uaQCaQ7rUsPmEUIp8xXmKCzRTckht89wFOtXp099H0LKK/HvjMXVT3hFLRGyi9csAwHyo2JrJGBF6fPeOglkQpyG+1WCgxJHMeDbrIFS8kP0yitZTsd2oUdRHTNC9Ac2a6D7NUnWGXcxqtArVvSr+TWhaK8pCxK++e3Au8tZUttBS9qrY+123J+pGe0SVsoePvkQA1IPXLV5LxDBf0TjfTVZyx0Rl8/5r+lFdBeEFzhZewn4a9PHsfuv5016BFQs2wAisfFCcNKlCwh3gFhdw6rHFsW+3tsG9fRDwDn4abfF5ugt1xwwo6cMIc96gm8DWgQjBxDtLHn/q2DWcTBGXnT2cwJh/QKkwiHiFRAOsjxIDo87nDMgqoryGBBzT0KYaxCbPa192y6Kpd1UAjZX93+O9bZhugknNDn5kF08kD71VXBuA8A5Mg2+FQuU1AnMY3zBTt4/jb3UnxKCNpO2hNXMnQjs8IaD8UFQE9zo5l5YfZ8=
+  file:
+    - binary.contents
+    - binary.hybrid.iso
+    - binary.log
+    - binary.packages
+    - livecd.ubuntu.initrd
+    - livecd.ubuntu.iso
+    - livecd.ubuntu.manifest
+    - livecd.ubuntu.manifest-remove
+    - livecd.ubuntu.size
+    - livecd.ubuntu.squashfs
+  on:
+    repo: swem/ubuntu-defaults-builder.trusty
