@@ -27,3 +27,4 @@ deploy:
     - livecd.ubuntu.squashfs
   on:
     repo: swem/ubuntu-defaults-builder.trusty
+    tags: true
